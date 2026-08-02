@@ -5,10 +5,16 @@ from typing import List, Optional
 import click
 import pandas as pd
 
-from .data import build_roster_with_stats, fetch_player_stats
-from .export import export_csv, export_json
-from .salary import load_salary_data
-from .simulator import evaluate_trade
+try:
+    from .data import build_roster_with_stats, fetch_player_stats
+    from .export import export_csv, export_json
+    from .salary import load_salary_data
+    from .simulator import evaluate_trade
+except ImportError:  # pragma: no cover - supports running this file directly
+    from data import build_roster_with_stats, fetch_player_stats
+    from export import export_csv, export_json
+    from salary import load_salary_data
+    from simulator import evaluate_trade
 
 
 def parse_player_list(value: str) -> List[str]:
@@ -100,3 +106,7 @@ def dump_stats(season: str, output: str) -> None:
     stats = fetch_player_stats(season=season)
     stats.to_json(output, orient="records", indent=2)
     click.echo(f"Wrote stats for {len(stats)} players to {output}")
+
+
+if __name__ == "__main__":
+    main()

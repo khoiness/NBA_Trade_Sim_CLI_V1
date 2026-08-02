@@ -1,0 +1,9 @@
+team,side,player_name,player_id,player_value,salary
+ATL,outgoing,Jalen Johnson,1630552,48.604,0.0
+ATL,outgoing,Dyson Daniels,1630700,34.699999999999996,0.0
+ATL,incoming,Jayson Tatum,1628369,44.779999999999994,0.0
+ATL,incoming,Derrick White,1628401,35.64600000000001,0.0
+BOS,outgoing,Jayson Tatum,1628369,44.779999999999994,0.0
+BOS,outgoing,Derrick White,1628401,35.64600000000001,0.0
+BOS,incoming,Jalen Johnson,1630552,48.604,0.0
+BOS,incoming,Dyson Daniels,1630700,34.699999999999996,0.0

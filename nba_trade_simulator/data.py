@@ -9,7 +9,7 @@ def fetch_player_stats(season: str = "2025-26", per_mode: str = "PerGame") -> pd
     """Fetch league-wide player stats for the selected season."""
     stats = leaguedashplayerstats.LeagueDashPlayerStats(
         season=season,
-        per_mode_simple=per_mode,
+        per_mode_detailed=per_mode,
         timeout=30,
     )
     frame = stats.get_data_frames()[0]

@@ -2,8 +2,12 @@ from typing import Dict, List, Optional
 
 import pandas as pd
 
-from .scoring import add_value_scores, aggregate_trade_value
-from .salary import compute_salary_total, salary_match_report
+try:
+    from .scoring import add_value_scores, aggregate_trade_value
+    from .salary import compute_salary_total, salary_match_report
+except ImportError:  # pragma: no cover - supports running this file directly
+    from scoring import add_value_scores, aggregate_trade_value
+    from salary import compute_salary_total, salary_match_report
 
 
 def resolve_player_selection(players: pd.DataFrame, selection: List[str]) -> pd.DataFrame:
