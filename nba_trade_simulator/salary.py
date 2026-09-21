@@ -1,15 +1,22 @@
 import pandas as pd
 
 
-def load_salary_data(path: str) -> pd.DataFrame:
-    """Load player salary information from a CSV file."""
+def load_salary_data(path: str, season: str = "2026-27") -> pd.DataFrame:
+    """Load player salary information from the salary CSV."""
     salaries = pd.read_csv(path)
-    salaries = salaries.rename(columns={
-        "PLAYER_ID": "player_id",
-        "PLAYER_NAME": "player_name",
-        "SALARY": "salary",
-    })
-    salaries["salary"] = pd.to_numeric(salaries["salary"], errors="coerce").fillna(0)
+    if "Player" not in salaries.columns and "PLAYER_NAME" not in salaries.columns:
+        salaries = pd.read_csv(path, skiprows=1)
+    name_column = "PLAYER_NAME" if "PLAYER_NAME" in salaries.columns else "Player"
+    salary_column = "SALARY" if "SALARY" in salaries.columns else season
+    if name_column not in salaries.columns or salary_column not in salaries.columns:
+        raise ValueError(f"Salary CSV must contain {name_column!r} and {salary_column!r}")
+    salaries = salaries.rename(columns={name_column: "player_name", salary_column: "salary"})
+    if "player_id" not in salaries.columns:
+        salaries["player_id"] = pd.NA
+    salaries["salary"] = pd.to_numeric(
+        salaries["salary"].replace(r"[\$,]", "", regex=True),
+        errors="coerce",
+    ).fillna(0)
     return salaries[["player_id", "player_name", "salary"]]
 
 

@@ -1,6 +1,6 @@
-# NBA Trade Simulator CLI
+# NBA Trade Simulator
 
-A small structured Python app that uses `nba_api` to evaluate NBA trade proposals and apply basic salary matching rules.
+A small Python app that uses `nba_api` to explore NBA rosters and compare team salary totals before and after a proposed trade.
 
 ## Features
 - Fetch rosters and player stats from `nba_api`
@@ -24,26 +24,33 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-## Usage
+## Interactive app
 
-Evaluate a trade between two teams by player names or IDs:
+Start the Streamlit interface:
 
 ```powershell
-python -m nba_trade_simulator.cli simulate \
-  --team-a LAL \
-  --team-b BOS \
-  --team-a-players LeBron James,Anthony Davis \
-  --team-b-players Jayson Tatum,Jaylen Brown \
-  --output "trade_report.json"
+streamlit run app.py
 ```
 
-If you have a CSV salary file, pass it with `--salary-file`.
+Choose Team A, choose a second team, select outgoing and incoming players, and review Team A's complete salary roster before and after the proposed trade.
+
+## CLI usage
+
+Dump player statistics by season:
+
+```powershell
+python -m nba_trade_simulator.cli dump-stats \
+  --season 2025-26 \
+  --output "stats.json"
+```
+
+The previous two-team trade evaluator is temporarily disabled while the salary comparison view is being developed.
 
 ## Project structure
 
 - `nba_trade_simulator/data.py` — loads roster and player statistics
 - `nba_trade_simulator/scoring.py` — computes player value scores
 - `nba_trade_simulator/salary.py` — salary matching helpers
-- `nba_trade_simulator/simulator.py` — trade evaluation logic
+- `nba_trade_simulator/simulator.py` — Team A salary comparison logic
 - `nba_trade_simulator/export.py` — JSON/CSV output helpers
 - `nba_trade_simulator/cli.py` — CLI entrypoint
