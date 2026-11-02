@@ -32,7 +32,7 @@ Start the Streamlit interface:
 streamlit run app.py
 ```
 
-Choose Team A, choose a second team, select outgoing and incoming players, and review Team A's complete salary roster before and after the proposed trade.
+Choose Team A and Team B, select outgoing and incoming players, and compare Team A's salary totals and player-by-player salary stacks before and after a proposed trade. The app also shows the roster's 2025–26 shot distribution across five court areas before and after the trade. Use **Swap teams** to reverse the teams and trade packages. The salary visualization includes 2026–27 cap, tax, and apron thresholds.
 
 ## CLI usage
 
