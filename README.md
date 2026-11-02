@@ -34,18 +34,6 @@ streamlit run app.py
 
 Choose Team A and Team B, select outgoing and incoming players, and compare Team A's salary totals and player-by-player salary stacks before and after a proposed trade. The app also shows the roster's 2025–26 shot distribution across five court areas before and after the trade. Use **Swap teams** to reverse the teams and trade packages. The salary visualization includes 2026–27 cap, tax, and apron thresholds.
 
-## CLI usage
-
-Dump player statistics by season:
-
-```powershell
-python -m nba_trade_simulator.cli dump-stats \
-  --season 2025-26 \
-  --output "stats.json"
-```
-
-The previous two-team trade evaluator is temporarily disabled while the salary comparison view is being developed.
-
 ## Project structure
 
 - `nba_trade_simulator/data.py` — loads roster and player statistics
