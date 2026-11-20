@@ -16,4 +16,6 @@ COPY nba_trade_simulator/ ./nba_trade_simulator/
 
 EXPOSE 8501
 
+HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+
 CMD ["streamlit", "run", "app.py"]
