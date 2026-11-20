@@ -34,6 +34,22 @@ streamlit run app.py
 
 Choose Team A and Team B, select outgoing and incoming players, and compare Team A's salary totals and player-by-player salary stacks before and after a proposed trade. The app also shows the roster's 2025–26 shot distribution across five court areas before and after the trade. Use **Swap teams** to reverse the teams and trade packages. The salary visualization includes 2026–27 cap, tax, and apron thresholds.
 
+## Run with Docker
+
+Build the image from the repository root:
+
+```powershell
+docker build -t nba-trade-simulator .
+```
+
+Run the app and open <http://localhost:8501>:
+
+```powershell
+docker run --rm -p 8501:8501 nba-trade-simulator
+```
+
+The app fetches roster, statistics, and shot-location data from the NBA API while it runs, so the container needs network access.
+
 ## Project structure
 
 - `nba_trade_simulator/data.py` — loads roster and player statistics
