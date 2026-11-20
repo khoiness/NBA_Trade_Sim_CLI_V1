@@ -54,7 +54,7 @@ def swap_teams() -> None:
 
 
 st.set_page_config(page_title="NBA Trade Simulator", layout="wide")
-st.title("NBA Roster Simulator")
+st.title("NBA Trade Simulator")
 st.caption("Build a trade package to see how the roster salary changes.")
 
 salary_file = str(Path(__file__).with_name("nba_salaries.csv"))

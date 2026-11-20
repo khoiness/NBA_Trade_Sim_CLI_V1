@@ -50,6 +50,16 @@ docker run --rm -p 8501:8501 nba-trade-simulator
 
 The app fetches roster, statistics, and shot-location data from the NBA API while it runs, so the container needs network access.
 
+## Live development with Docker Compose
+
+Start the app from the repository root:
+
+```powershell
+docker compose up --build
+```
+
+Open <http://localhost:8501>. The project is mounted into the container, and Streamlit watches for file changes and reruns the app when you save edits. Stop the app with `Ctrl+C`.
+
 ## Project structure
 
 - `nba_trade_simulator/data.py` — loads roster and player statistics
